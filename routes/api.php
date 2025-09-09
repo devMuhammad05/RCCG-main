@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\V1\AuthController;
-use App\Http\Controllers\Api\V1\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\SearchController;
+use App\Http\Controllers\Api\V1\FeedbackController;
+use App\Http\Controllers\Api\V1\UserProfileController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -24,6 +26,8 @@ Route::prefix('v1')->group(function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('user-profile', [UserProfileController::class, 'index']);
         Route::put('user-profile', [UserProfileController::class, 'update']);
+        Route::post('feedbacks', FeedbackController::class);
+        Route::get('search', SearchController::class);
     });
 
 });
