@@ -23,7 +23,7 @@ Route::prefix('v1')->group(function (): void {
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('user-profile', [UserProfileController::class, 'index']);
-
+        Route::put('user-profile', [UserProfileController::class, 'update']);
     });
 
 });

@@ -24,7 +24,6 @@ class AuthController extends Controller
             'token' => $token,
         ];
 
-        // return response
         return $this->createdResponse('Registration successful', $response);
     }
 
@@ -33,8 +32,7 @@ class AuthController extends Controller
         $data = $request->validated();
 
         if (! Auth::attempt($data)) {
-            // return $this->unauthorizedResponse( 'Email or password is not correct', [], 401);
-            dd('unauthorized');
+            return $this->unauthorizedResponse('Email or password incorrect');
         }
 
         $user = User::where('email', $data['email'])->first();

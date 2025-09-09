@@ -29,7 +29,10 @@ trait ApiResponse
      */
     public function errorResponse(string $message, int $code): JsonResponse
     {
-        return response()->json(['error' => $message], $code);
+        return response()->json([
+            'status' => "error",
+            'message' => $message
+        ], $code);
     }
 
     /**
@@ -75,7 +78,7 @@ trait ApiResponse
     /**
      * Return a 401 Unauthorized response.
      */
-    public function unauthorizedResponse($message = 'Unauthorized'): JsonResponse
+    public function unauthorizedResponse(string $message = 'Unauthorized'): JsonResponse
     {
         return $this->errorResponse($message, Response::HTTP_UNAUTHORIZED);
     }
@@ -83,7 +86,7 @@ trait ApiResponse
     /**
      * Return a 422 Validation Error response.
      */
-    public function validationErrorResponse($message = 'Validation failed'): JsonResponse
+    public function validationErrorResponse(string $message = 'Validation failed'): JsonResponse
     {
         return $this->errorResponse($message, Response::HTTP_UNPROCESSABLE_ENTITY);
     }

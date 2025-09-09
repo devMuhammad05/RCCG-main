@@ -25,6 +25,10 @@ class UserProfileResource extends JsonResource
             'bio' => $this->bio,
             'short_testimony' => $this->short_testimony,
             'avatar' => $this->avatar,
+            'instagram_url' => $this->instagram_url,
+            'whatsapp_url' => $this->whatsapp_url,
+            'facebook_url' => $this->facebook_url,
+            'x_url' => $this->x_url,
             'updated_at' => $this->updated_at,
         ];
     }
