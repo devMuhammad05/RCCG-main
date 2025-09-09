@@ -13,11 +13,36 @@
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $user_id
+ * @property string $type
+ * @property string|null $email
+ * @property string $message
+ * @property bool $can_be_contacted
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereCanBeContacted($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Feedback whereUserId($value)
  */
 	class Feedback extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest query()
+ */
+	class PrayerRequest extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -45,6 +70,8 @@ namespace App\Models{
  * @property-read int|null $feedbacks_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PrayerRequest> $prayerRequests
+ * @property-read int|null $prayer_requests_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])

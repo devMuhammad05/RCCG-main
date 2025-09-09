@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Feedback::class);
     }
+
+    public function prayerRequests(): HasMany
+    {
+        return $this->hasMany(PrayerRequest::class);
+    }
 }
