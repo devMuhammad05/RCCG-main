@@ -7,14 +7,10 @@ use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\FeedbackController;
 use App\Http\Controllers\Api\V1\UserProfileController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/user', fn(Request $request) => $request->user())->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function (): void {
-    Route::get('/', function () {
-        return 'API is active';
-    });
+    Route::get('/', fn() => 'API is active');
 
     Route::prefix('auth')->group(function (): void {
         Route::post('register', [AuthController::class, 'register']);
@@ -22,10 +18,13 @@ Route::prefix('v1')->group(function (): void {
         Route::post('logout', [AuthController::class, 'login']);
     });
 
-    Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::group(['middleware' => ['auth:sanctum']], function (): void {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('user-profile', [UserProfileController::class, 'index']);
         Route::put('user-profile', [UserProfileController::class, 'update']);
+
+        Route::get('users/{user}/', [UserProfileController::class, 'index']);
+
         Route::post('feedbacks', FeedbackController::class);
         Route::get('search', SearchController::class);
     });
