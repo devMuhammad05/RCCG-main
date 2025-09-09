@@ -11,27 +11,23 @@ trait ApiResponse
     /**
      * Return a success JSON response.
      */
-    public function successResponse($message, mixed $data, int $code = Response::HTTP_OK): JsonResponse
+    public function successResponse(string $message, mixed $data = [], int $code = Response::HTTP_OK): JsonResponse
     {
-        // Handle the pagination case.
         if ($data instanceof JsonResource) {
-            // Get the fully transformed data (includes pagination, links, etc.)
-            $resourceData = $data->response()->getData(true);
-
-            return response()->json($resourceData, $code);
+            $data = $data->toArray(request());
         }
 
         return response()->json([
-            'status' => 'success',
+            'status'  => 'success',
             'message' => $message,
-            'data' => $data,
+            'data'    => $data,
         ], $code);
     }
 
     /**
      * Return an error JSON response.
      */
-    public function errorResponse($message, int $code): JsonResponse
+    public function errorResponse(string $message, int $code): JsonResponse
     {
         return response()->json(['error' => $message], $code);
     }
@@ -39,7 +35,7 @@ trait ApiResponse
     /**
      * Return an error message JSON response with custom header.
      */
-    public function errorMessage($message, int $code): JsonResponse
+    public function errorMessage(string $message, int $code): JsonResponse
     {
         return response()->json($message, $code)->header('Content-Type', 'application/json');
     }

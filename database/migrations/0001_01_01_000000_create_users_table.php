@@ -23,6 +23,11 @@ return new class extends Migration
             $table->string('short_testimony')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();
+            $table->tinyText('instagram_url')->nullable();
+            $table->tinyText('whatsapp_url')->nullable();
+            $table->tinyText('facebook_url')->nullable();
+            $table->tinyText('x_url')->nullable();
+            $table->tinyText('linkedin_url')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
