@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\UserProfileResource;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
@@ -18,9 +18,8 @@ class UserProfileController extends Controller
 
         $data = new UserProfileResource($user);
 
-        return $this->successResponse("User Profile returned successfully", $data);
+        return $this->successResponse('User Profile returned successfully', $data);
     }
-
 
     /**
      * Store a newly created resource in storage.

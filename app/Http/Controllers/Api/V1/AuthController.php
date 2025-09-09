@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\V1\Auth\LoginUserRequest;
 use App\Http\Requests\Api\V1\Auth\RegisterUserRequest;
-
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,7 +18,6 @@ class AuthController extends Controller
         $user = User::create($data);
 
         $token = $user->createToken('auth_token')->plainTextToken;
-
 
         $response = [
             'user' => $user,
@@ -36,7 +34,7 @@ class AuthController extends Controller
 
         if (! Auth::attempt($data)) {
             // return $this->unauthorizedResponse( 'Email or password is not correct', [], 401);
-            dd("unauthorized");
+            dd('unauthorized');
         }
 
         $user = User::where('email', $data['email'])->first();
