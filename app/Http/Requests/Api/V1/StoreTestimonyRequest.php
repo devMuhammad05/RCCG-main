@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePrayerRequest extends FormRequest
+class StoreTestimonyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +21,11 @@ class StorePrayerRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'is_shared_anonymously' => ['required', 'boolean'],
-            'request' => ['required', 'string', 'max:2000'],
+            'message' => ['required', 'string', 'max:2000'],
+            'show_as_featured' => ['required', 'boolean'],
         ];
     }
 }

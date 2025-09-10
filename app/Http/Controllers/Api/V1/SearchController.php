@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Resources\V1\UserProfileResource;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
@@ -28,7 +27,6 @@ class SearchController extends Controller
             ->orWhere('profession', 'like', "%{$query}%")
             ->limit(20)
             ->get(['id', 'name', 'profession', 'location', 'avatar']);
-
 
         return $this->successResponse('Search results returned successfully', $users);
     }

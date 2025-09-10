@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\V1\UserProfileResource;
 use App\Http\Requests\Api\V1\UpdateUserProfileRequest;
+use App\Http\Resources\V1\UserProfileResource;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(?User $user = null)
+    public function index(?User $user = null): JsonResponse
     {
         $user ??= Auth::user();
 
@@ -26,7 +26,7 @@ class UserProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserProfileRequest $request)
+    public function update(UpdateUserProfileRequest $request): JsonResponse
     {
         $user = Auth::user();
 

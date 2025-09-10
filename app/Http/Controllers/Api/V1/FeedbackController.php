@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Feedback;
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\V1\StoreFeedbackRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedbackController extends Controller
 {
@@ -22,6 +21,6 @@ class FeedbackController extends Controller
 
         $user->feedbacks()->create($data);
 
-        return $this->createdResponse('Feedback created successfully',  $data);
+        return $this->createdResponse('Feedback created successfully', $data);
     }
 }

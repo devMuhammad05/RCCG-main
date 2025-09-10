@@ -2,14 +2,25 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\V1\StorePrayerRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class PrayerRequestController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(): JsonResponse
+    {
+        $user = Auth::user();
+
+        $data = $user->prayerRequests()->paginate(8);
+
+        return $this->successResponse('Prayer Request returned successfully', $data);
+    }
+
     public function store(StorePrayerRequest $request): JsonResponse
     {
         $data = $request->validated();
@@ -18,6 +29,6 @@ class PrayerRequestController extends Controller
 
         $user->prayerRequests()->create($data);
 
-        return $this->createdResponse('Prayer Request created successfully',  $data);
+        return $this->createdResponse('Prayer Request created successfully', $data);
     }
- }
+}

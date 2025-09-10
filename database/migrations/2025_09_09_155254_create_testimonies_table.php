@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prayer_requests', function (Blueprint $table) {
+        Schema::create('testimonies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->boolean('is_shared_anonymously');
-            $table->text('request');
+            $table->text('message');
+            $table->boolean('show_as_featured');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prayer_requests');
+        Schema::dropIfExists('testimonies');
     }
 };

@@ -38,11 +38,47 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property int $user_id
+ * @property bool $is_shared_anonymously
+ * @property string $request
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereIsSharedAnonymously($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereRequest($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|PrayerRequest whereUserId($value)
  */
 	class PrayerRequest extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property bool $is_shared_anonymously
+ * @property string $message
+ * @property bool $show_as_featured
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereIsSharedAnonymously($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereShowAsFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Testimony whereUserId($value)
+ */
+	class Testimony extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -72,6 +108,8 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PrayerRequest> $prayerRequests
  * @property-read int|null $prayer_requests_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Testimony> $testimonies
+ * @property-read int|null $testimonies_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])

@@ -1,16 +1,18 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\FeedbackController;
+use App\Http\Controllers\Api\V1\PrayerRequestController;
+use App\Http\Controllers\Api\V1\SearchController;
+use App\Http\Controllers\Api\V1\TestimonyController;
+use App\Http\Controllers\Api\V1\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\AuthController;
-use App\Http\Controllers\Api\V1\SearchController;
-use App\Http\Controllers\Api\V1\FeedbackController;
-use App\Http\Controllers\Api\V1\UserProfileController;
 
-Route::get('/user', fn(Request $request) => $request->user())->middleware('auth:sanctum');
+Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function (): void {
-    Route::get('/', fn() => 'API is active');
+    Route::get('/', fn () => 'API is active');
 
     Route::prefix('auth')->group(function (): void {
         Route::post('register', [AuthController::class, 'register']);
@@ -27,6 +29,13 @@ Route::prefix('v1')->group(function (): void {
 
         Route::post('feedbacks', FeedbackController::class);
         Route::get('search', SearchController::class);
+
+        Route::post('prayer-requests', [PrayerRequestController::class, 'store']);
+        Route::get('prayer-requests', [PrayerRequestController::class, 'index']);
+
+        Route::post('testimonies', [TestimonyController::class, 'store']);
+        Route::get('testimonies', [TestimonyController::class, 'index']);
+
     });
 
 });

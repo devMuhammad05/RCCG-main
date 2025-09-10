@@ -30,8 +30,8 @@ trait ApiResponse
     public function errorResponse(string $message, int $code): JsonResponse
     {
         return response()->json([
-            'status' => "error",
-            'message' => $message
+            'status' => 'error',
+            'message' => $message,
         ], $code);
     }
 

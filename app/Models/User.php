@@ -48,7 +48,6 @@ class User extends Authenticatable
         ];
     }
 
-
     public function feedbacks(): HasMany
     {
         return $this->hasMany(Feedback::class);
@@ -57,5 +56,10 @@ class User extends Authenticatable
     public function prayerRequests(): HasMany
     {
         return $this->hasMany(PrayerRequest::class);
+    }
+
+    public function testimonies(): HasMany
+    {
+        return $this->hasMany(Testimony::class);
     }
 }

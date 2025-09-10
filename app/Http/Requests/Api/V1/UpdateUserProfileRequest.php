@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Api\V1;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateUserProfileRequest extends FormRequest
 {
@@ -23,26 +23,26 @@ class UpdateUserProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'            => ['sometimes', 'string', 'max:255'],
-            'email'           => [
+            'name' => ['sometimes', 'string', 'max:255'],
+            'email' => [
                 'sometimes',
                 'email',
                 'max:255',
                 Rule::unique('users', 'email')->ignore($this->user()->id),
             ],
-            'phone_number'    => ['sometimes', 'string', 'max:20'],
-            'profession'      => ['sometimes', 'string', 'max:100'],
-            'location'        => ['sometimes', 'string', 'max:255'],
-            'bio'             => ['sometimes', 'string', 'max:500'],
+            'phone_number' => ['sometimes', 'string', 'max:20'],
+            'profession' => ['sometimes', 'string', 'max:100'],
+            'location' => ['sometimes', 'string', 'max:255'],
+            'bio' => ['sometimes', 'string', 'max:500'],
             'short_testimony' => ['sometimes', 'string', 'max:255'],
-            'avatar'          => ['sometimes', 'url'],
+            'avatar' => ['sometimes', 'url'],
 
             // Social media links
-            'instagram_url'   => ['sometimes', 'nullable', 'url'],
-            'whatsapp_url'    => ['sometimes', 'nullable', 'url'],
-            'facebook_url'    => ['sometimes', 'nullable', 'url'],
-            'x_url'           => ['sometimes', 'nullable', 'url'],
-            'linkedin_url'    => ['sometimes', 'nullable', 'url'],
+            'instagram_url' => ['sometimes', 'nullable', 'url'],
+            'whatsapp_url' => ['sometimes', 'nullable', 'url'],
+            'facebook_url' => ['sometimes', 'nullable', 'url'],
+            'x_url' => ['sometimes', 'nullable', 'url'],
+            'linkedin_url' => ['sometimes', 'nullable', 'url'],
 
         ];
     }

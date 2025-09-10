@@ -22,9 +22,9 @@ class StoreFeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type'             => ['required', 'string', 'max:100'],
-            'email'            => ['nullable', 'email', 'max:255'],
-            'message'          => ['required', 'string', 'max:1000'],
+            'type' => ['required', 'string', 'max:100'],
+            'email' => ['nullable', 'email', 'max:255'],
+            'message' => ['required', 'string', 'max:1000'],
             'can_be_contacted' => ['required', 'boolean'],
         ];
     }
