@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Container\Attributes\Scoped;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class Testimony extends Model
 {
@@ -14,8 +16,16 @@ class Testimony extends Model
         ];
     }
 
+
+    // #[Scoped]
+    public function ScopeFeatured($query)
+    {
+        return $query->where('show_as_featured', true);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }

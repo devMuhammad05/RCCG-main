@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,7 @@ class TestimonyController extends Controller
     {
         $user = Auth::user();
 
-        // Todo - pagination with resource
-        $data = $user->testimonies()->with('user')->paginate(8);
+        $data = $user->testimonies()->with('user')->get();
 
         return $this->successResponse(
             'Testimonies returned successfully',

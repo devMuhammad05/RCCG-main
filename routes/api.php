@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
 use App\Http\Controllers\Api\V1\FeedbackController;
 use App\Http\Controllers\Api\V1\PrayerRequestController;
 use App\Http\Controllers\Api\V1\SearchController;
@@ -28,7 +29,7 @@ Route::prefix('v1')->group(function (): void {
         Route::get('users/{user}/', [UserProfileController::class, 'index']);
 
         Route::post('feedbacks', FeedbackController::class);
-        Route::get('search', SearchController::class);
+        // Route::get('search', SearchController::class);
 
         Route::post('prayer-requests', [PrayerRequestController::class, 'store']);
         Route::get('prayer-requests', [PrayerRequestController::class, 'index']);
@@ -36,6 +37,9 @@ Route::prefix('v1')->group(function (): void {
         Route::post('testimonies', [TestimonyController::class, 'store']);
         Route::get('testimonies', [TestimonyController::class, 'index']);
 
+        Route::get('featured-testimonies', FeaturedTestimonyController::class);
+
     });
+
 
 });
