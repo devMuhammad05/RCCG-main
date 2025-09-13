@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Api\V1\AuthController;
-use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
-use App\Http\Controllers\Api\V1\FeedbackController;
-use App\Http\Controllers\Api\V1\PrayerRequestController;
-use App\Http\Controllers\Api\V1\SearchController;
-use App\Http\Controllers\Api\V1\TestimonyController;
-use App\Http\Controllers\Api\V1\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\SearchController;
+use App\Http\Controllers\Api\V1\FeedbackController;
+use App\Http\Controllers\Api\V1\TestimonyController;
+use App\Http\Controllers\Api\V1\UserProfileController;
+use App\Http\Controllers\Api\V1\PrayerRequestController;
+use App\Http\Controllers\Api\V1\UpcomingEventController;
+use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
 
 Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
@@ -38,6 +39,8 @@ Route::prefix('v1')->group(function (): void {
         Route::get('testimonies', [TestimonyController::class, 'index']);
 
         Route::get('featured-testimonies', FeaturedTestimonyController::class);
+
+        Route::get('upcoming-events', UpcomingEventController::class);
 
     });
 

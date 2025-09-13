@@ -13,6 +13,15 @@
 
 namespace App\Models{
 /**
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event query()
+ */
+	class Event extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property int $user_id
  * @property string $type
@@ -112,6 +121,8 @@ namespace App\Models{
  * @property-read int|null $testimonies_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\VolunteerSignup> $volunteerSignups
+ * @property-read int|null $volunteer_signups_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
@@ -137,5 +148,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereXUrl($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\VolunteerSignup> $signups
+ * @property-read int|null $signups_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity query()
+ */
+	class VolunteerOpportunity extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property-read \App\Models\VolunteerOpportunity|null $opportunity
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup query()
+ */
+	class VolunteerSignup extends \Eloquent {}
 }
 
