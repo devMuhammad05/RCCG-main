@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('skills_experience')->nullable();
             $table->boolean('confirm_availability')->default(false);
             $table->boolean('agree_training')->default(false);
+            $table->boolean('is_cancelled')->default(false);
             $table->timestamps();
         });
     }

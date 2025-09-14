@@ -9,7 +9,10 @@ use App\Http\Controllers\Api\V1\TestimonyController;
 use App\Http\Controllers\Api\V1\UserProfileController;
 use App\Http\Controllers\Api\V1\PrayerRequestController;
 use App\Http\Controllers\Api\V1\UpcomingEventController;
+use App\Http\Controllers\Api\V1\VolunteerSignUpController;
 use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
+use App\Http\Controllers\Api\V1\VolunteerOpportunityController;
+use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
 
 Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
@@ -30,7 +33,7 @@ Route::prefix('v1')->group(function (): void {
         Route::get('users/{user}/', [UserProfileController::class, 'index']);
 
         Route::post('feedbacks', FeedbackController::class);
-        // Route::get('search', SearchController::class);
+        Route::get('search', SearchController::class);
 
         Route::post('prayer-requests', [PrayerRequestController::class, 'store']);
         Route::get('prayer-requests', [PrayerRequestController::class, 'index']);
@@ -42,7 +45,15 @@ Route::prefix('v1')->group(function (): void {
 
         Route::get('upcoming-events', UpcomingEventController::class);
 
+        Route::get('volunteer-opportunities', [VolunteerOpportunityController::class, 'index']);
+
+        Route::apiResource('volunteer-opportunities.signups', VolunteerSignUpController::class)->only('store', 'update');
+
+        Route::get('user-volunteer-opportunities', [UserVolunteerOpportunityController::class, 'index']);
+
+
     });
 
 
 });
+
