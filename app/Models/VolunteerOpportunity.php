@@ -12,10 +12,9 @@ class VolunteerOpportunity extends Model
         'end_date' => 'date',
     ];
 
-
     /**
      * A volunteer opportunity has many signups.
-    */
+     */
     public function signups()
     {
         return $this->hasMany(VolunteerSignup::class);

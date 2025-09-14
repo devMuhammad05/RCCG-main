@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\FeaturedTestimonyResource;
 use App\Models\Testimony;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\V1\TestimonyResource;
-use App\Http\Resources\V1\FeaturedTestimonyResource;
 
 class FeaturedTestimonyController extends Controller
 {
@@ -16,9 +15,9 @@ class FeaturedTestimonyController extends Controller
     public function __invoke(Request $request)
     {
         $data = Testimony::featured()
-                ->with('user')
-                ->latest()
-                ->get();
+            ->with('user')
+            ->latest()
+            ->get();
 
         return $this->successResponse(
             'Featured Testimonies returned successfully',

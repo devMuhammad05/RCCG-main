@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->string('title');
             $table->string('category');
-            $table->string('sub-title');
+            $table->string('sub_title');
             $table->longText('body');
             $table->boolean('is_active');
             $table->timestamps();

@@ -14,7 +14,7 @@ class VolunteerSignup extends Model
 
     /**
      * Each signup belongs to a volunteer opportunity.
-    */
+     */
     public function opportunity()
     {
         return $this->belongsTo(VolunteerOpportunity::class, 'volunteer_opportunity_id');

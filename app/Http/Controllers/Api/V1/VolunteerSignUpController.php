@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\VolunteerSignup;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Models\VolunteerOpportunity;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\V1\StoreVolunteerSignUpRequest;
 use App\Http\Requests\Api\V1\UpdateVolunteerSignUpRequest;
+use App\Models\VolunteerOpportunity;
+use App\Models\VolunteerSignup;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class VolunteerSignUpController extends Controller
 {
@@ -101,26 +101,23 @@ class VolunteerSignUpController extends Controller
         );
     }
 
-
-    // Todo - cancel volunteer
-
     /**
      * Remove the specified volunteer signup.
      */
-    public function destroy(VolunteerOpportunity $volunteerOpportunity, VolunteerSignup $signup): JsonResponse
-    {
-        // Ensure the signup belongs to the specified opportunity
-        if ($signup->volunteer_opportunity_id !== $volunteerOpportunity->id) {
-            return $this->notFoundResponse('Volunteer signup not found for this opportunity');
-        }
+    // public function destroy(VolunteerOpportunity $volunteerOpportunity, VolunteerSignup $signup): JsonResponse
+    // {
+    //     // Ensure the signup belongs to the specified opportunity
+    //     if ($signup->volunteer_opportunity_id !== $volunteerOpportunity->id) {
+    //         return $this->notFoundResponse('Volunteer signup not found for this opportunity');
+    //     }
 
-        // Ensure the user can only delete their own signup
-        if ($signup->user_id !== Auth::id()) {
-            return $this->forbiddenResponse('You can only delete your own volunteer signup');
-        }
+    //     // Ensure the user can only delete their own signup
+    //     if ($signup->user_id !== Auth::id()) {
+    //         return $this->forbiddenResponse('You can only delete your own volunteer signup');
+    //     }
 
-        $signup->delete();
+    //     $signup->delete();
 
-        return $this->successResponse('Volunteer signup deleted successfully');
-    }
+    //     return $this->successResponse('Volunteer signup deleted successfully');
+    // }
 }

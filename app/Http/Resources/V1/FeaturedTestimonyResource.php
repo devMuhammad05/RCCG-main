@@ -12,16 +12,15 @@ class FeaturedTestimonyResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-public function toArray(Request $request): array
-{
-    return [
-        'id' => $this->id,
-        'name' => $this->is_shared_anonymously ? 'Anonymous' : $this->user?->name,
-        'avatar' => $this->is_shared_anonymously ? null : $this->user?->avatar,
-        'is_shared_anonymously' => $this->is_shared_anonymously,
-        'message' => $this->message,
-        'show_as_featured' => $this->show_as_featured,
-    ];
-}
-
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->is_shared_anonymously ? 'Anonymous' : $this->user?->name,
+            'avatar' => $this->is_shared_anonymously ? null : $this->user?->avatar,
+            'is_shared_anonymously' => $this->is_shared_anonymously,
+            'message' => $this->message,
+            'show_as_featured' => $this->show_as_featured,
+        ];
+    }
 }

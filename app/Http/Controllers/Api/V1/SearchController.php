@@ -15,11 +15,11 @@ class SearchController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         $request->validate([
-            'query'  => ['required', 'string', 'max:255'],
+            'query' => ['required', 'string', 'max:255'],
             'filter' => ['nullable', 'in:all,name,profession,email,phone_number'],
         ]);
 
-        $query  = $request->input('query');
+        $query = $request->input('query');
         $filter = $request->input('filter', 'all');
 
         $users = User::query();
@@ -29,7 +29,7 @@ class SearchController extends Controller
             'profession' => $users->where('profession', 'like', "%{$query}%"),
             'email' => $users->where('email', 'like', "%{$query}%"),
             'phone_number' => $users->where('phone_number', 'like', "%{$query}%"),
-            
+
             default => $users->where(function ($q) use ($query): void {
                 $q->where('name', 'like', "%{$query}%")
                     ->orWhere('email', 'like', "%{$query}%")
