@@ -24,31 +24,19 @@ class SearchController extends Controller
 
         $users = User::query();
 
-        switch ($filter) {
-            case 'name':
-                $users->where('name', 'like', "%{$query}%");
-                break;
-
-            case 'profession':
-                $users->where('profession', 'like', "%{$query}%");
-                break;
-
-            case 'email':
-                $users->where('email', 'like', "%{$query}%");
-                break;
-
-            case 'phone_number':
-                $users->where('phone_number', 'like', "%{$query}%");
-                break;
-
-            default:
-                $users->where(function ($q) use ($query) {
-                    $q->where('name', 'like', "%{$query}%")
-                        ->orWhere('email', 'like', "%{$query}%")
-                        ->orWhere('phone_number', 'like', "%{$query}%")
-                        ->orWhere('profession', 'like', "%{$query}%");
-                });
-        }
+        match ($filter) {
+            'name' => $users->where('name', 'like', "%{$query}%"),
+            'profession' => $users->where('profession', 'like', "%{$query}%"),
+            'email' => $users->where('email', 'like', "%{$query}%"),
+            'phone_number' => $users->where('phone_number', 'like', "%{$query}%"),
+            
+            default => $users->where(function ($q) use ($query): void {
+                $q->where('name', 'like', "%{$query}%")
+                    ->orWhere('email', 'like', "%{$query}%")
+                    ->orWhere('phone_number', 'like', "%{$query}%")
+                    ->orWhere('profession', 'like', "%{$query}%");
+            }),
+        };
 
         $results = $users->limit(20)->get(['id', 'name', 'profession', 'location', 'avatar']);
 

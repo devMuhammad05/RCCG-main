@@ -29,6 +29,7 @@ class UpdateVolunteerSignUpRequest extends FormRequest
             'skills_experience' => ['sometimes', 'nullable', 'string', 'max:1000'],
             'confirm_availability' => ['sometimes', 'boolean'],
             'agree_training' => ['sometimes', 'boolean'],
+            'is_cancelled' => ['sometimes', 'boolean'],
         ];
     }
 }

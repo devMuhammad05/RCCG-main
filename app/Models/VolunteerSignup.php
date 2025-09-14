@@ -9,6 +9,7 @@ class VolunteerSignup extends Model
     protected $casts = [
         'confirm_availability' => 'boolean',
         'agree_training' => 'boolean',
+        'is_cancelled' => 'boolean',
     ];
 
     /**

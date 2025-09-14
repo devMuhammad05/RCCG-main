@@ -13,9 +13,31 @@
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property string $thumbnail
+ * @property string $title
+ * @property string $sub-title
+ * @property string $description
+ * @property string|null $category
+ * @property string $date
+ * @property string|null $location
+ * @property string|null $venue
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereSubTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereVenue($value)
  */
 	class Event extends \Eloquent {}
 }
@@ -152,22 +174,68 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property int $id
+ * @property string $title
+ * @property string|null $description
+ * @property \Illuminate\Support\Carbon $start_date
+ * @property \Illuminate\Support\Carbon $end_date
+ * @property array<array-key, mixed> $roles_needed
+ * @property string|null $special_requirements
+ * @property string|null $hours_required
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\VolunteerSignup> $signups
  * @property-read int|null $signups_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereHoursRequired($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereRolesNeeded($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereSpecialRequirements($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerOpportunity whereUpdatedAt($value)
  */
 	class VolunteerOpportunity extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
- * @property-read \App\Models\VolunteerOpportunity|null $opportunity
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $volunteer_opportunity_id
+ * @property int $user_id
+ * @property string $name
+ * @property string $email
+ * @property string|null $role_selected
+ * @property string|null $hours_selected
+ * @property string|null $skills_experience
+ * @property bool $confirm_availability
+ * @property bool $agree_training
+ * @property bool $is_cancelled
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\VolunteerOpportunity $opportunity
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereAgreeTraining($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereConfirmAvailability($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereHoursSelected($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereIsCancelled($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereRoleSelected($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereSkillsExperience($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|VolunteerSignup whereVolunteerOpportunityId($value)
  */
 	class VolunteerSignup extends \Eloquent {}
 }
