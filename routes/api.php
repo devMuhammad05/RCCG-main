@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\ArticleController;
 use App\Http\Controllers\Api\V1\FeedbackController;
@@ -19,14 +18,9 @@ use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
 Route::prefix('v1')->group(function (): void {
     Route::get('/', fn () => 'API is active');
 
-    Route::prefix('auth')->group(function (): void {
-        Route::post('register', [AuthController::class, 'register']);
-        Route::post('login', [AuthController::class, 'login']);
-        Route::post('logout', [AuthController::class, 'login']);
-    });
 
     Route::group(['middleware' => ['auth:sanctum']], function (): void {
-        Route::post('/logout', [AuthController::class, 'logout']);
+
         Route::get('user-profile', [UserProfileController::class, 'index']);
         Route::put('user-profile', [UserProfileController::class, 'update']);
 
@@ -56,3 +50,6 @@ Route::prefix('v1')->group(function (): void {
     });
 
 });
+
+
+require __DIR__ . '/auth.php';
