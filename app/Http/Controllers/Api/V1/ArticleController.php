@@ -17,7 +17,6 @@ class ArticleController extends Controller
     {
         $query = Article::query();
 
-        // check if category filter is provided
         if ($request->filled('category')) {
             $category = $request->get('category');
 
@@ -29,7 +28,7 @@ class ArticleController extends Controller
             $query->where('category', $category);
         }
 
-        $articles = $query->get();
+        $articles = $query->paginate(6);
 
         return $this->successResponse('Articles returned successfully', $articles);
     }

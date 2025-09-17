@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('thumbnail');
             $table->string('title');
-            $table->string('category');
             $table->string('sub_title');
+            $table->string('slug');
+            $table->string('category');
             $table->longText('body');
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

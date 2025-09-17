@@ -16,6 +16,33 @@ namespace App\Models{
  * @property int $id
  * @property string $thumbnail
  * @property string $title
+ * @property string $sub_title
+ * @property string $category
+ * @property string $body
+ * @property bool $is_active
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereCategory($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereSubTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereUpdatedAt($value)
+ */
+	class Article extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $thumbnail
+ * @property string $title
  * @property string $sub-title
  * @property string $description
  * @property string|null $category
