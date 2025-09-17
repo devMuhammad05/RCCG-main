@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Container\Attributes\Scoped;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Container\Attributes\Scoped;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Testimony extends Model
 {
@@ -21,7 +22,7 @@ class Testimony extends Model
         return $query->where('show_as_featured', true);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

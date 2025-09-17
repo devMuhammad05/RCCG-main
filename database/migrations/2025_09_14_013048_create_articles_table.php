@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('thumbnail');
             $table->string('title');
             $table->string('sub_title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('category');
             $table->longText('body');
             $table->boolean('is_active')->default(true);

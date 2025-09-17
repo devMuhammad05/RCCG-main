@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $query = Article::query();
+        $query = Article::active()->latest();
 
         if ($request->filled('category')) {
             $category = $request->get('category');
@@ -31,5 +31,22 @@ class ArticleController extends Controller
         $articles = $query->paginate(6);
 
         return $this->successResponse('Articles returned successfully', $articles);
+    }
+
+    public function show(Article $article): JsonResponse
+    {
+        $relatedArticles = Article::active()
+            ->where('category', $article->category)
+            ->where('id', '!=', $article->id)
+            ->latest()
+            ->limit(4)
+            ->get();
+
+        $data = [
+            'article' => $article,
+            'related_articles' => $relatedArticles,
+        ];
+
+        return $this->successResponse('Article returned successfully', $data);
     }
 }

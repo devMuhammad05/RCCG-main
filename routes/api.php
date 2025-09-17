@@ -15,7 +15,6 @@ use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
 use App\Http\Controllers\Api\V1\VolunteerOpportunityController;
 use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
 
-Route::get('/user', fn (Request $request) => $request->user())->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function (): void {
     Route::get('/', fn () => 'API is active');
@@ -52,7 +51,7 @@ Route::prefix('v1')->group(function (): void {
 
         Route::get('user-volunteer-opportunities', [UserVolunteerOpportunityController::class, 'index']);
 
-        Route::get('articles', [ArticleController::class, 'index']);
+        Route::apiResource('articles', ArticleController::class, ['index', 'show']);
 
     });
 
