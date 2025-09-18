@@ -12,7 +12,6 @@ use Illuminate\Validation\Rules;
 
 class NewPasswordController extends Controller
 {
-
     use Otp;
 
     /**
@@ -21,8 +20,8 @@ class NewPasswordController extends Controller
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'email'    => ['required', 'email', 'exists:users,email'],
-            'otp'      => ['required', 'digits:6'],
+            'email' => ['required', 'email', 'exists:users,email'],
+            'otp' => ['required', 'digits:6'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

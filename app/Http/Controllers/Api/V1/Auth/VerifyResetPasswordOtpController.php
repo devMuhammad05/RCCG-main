@@ -18,7 +18,7 @@ class VerifyResetPasswordOtpController extends Controller
     {
         $data = $request->validate([
             'email' => ['required', 'email'],
-            'otp'   => ['required', 'digits:6'],
+            'otp' => ['required', 'digits:6'],
         ]);
 
         $verifyOtp = $this->verifyOtp($data['email'], $data['otp']);

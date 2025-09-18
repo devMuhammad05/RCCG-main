@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1\Auth;
 
-use App\Traits\Otp;
-use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Api\V1\Auth\LoginUserRequest;
 use App\Http\Requests\Api\V1\Auth\RegisterUserRequest;
+use App\Models\User;
+use App\Traits\Otp;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -28,7 +28,6 @@ class AuthController extends Controller
         ];
 
         // $this->sendOtp($user->email);
-
 
         return $this->createdResponse('Registration successful', $response);
     }
@@ -57,7 +56,6 @@ class AuthController extends Controller
 
         return $this->successResponse('Login successful', $response);
     }
-
 
     public function logout()
     {

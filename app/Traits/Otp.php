@@ -14,7 +14,7 @@ trait Otp
      */
     public function sendOtp(string $email): array
     {
-        $otp = rand(100000, 999999);
+        $otp = random_int(100000, 999999);
 
         try {
             // Store OTP in cache for 10 minutes

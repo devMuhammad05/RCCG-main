@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api\V1\Auth;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class EmailVerificationPromptController extends Controller
 {
@@ -18,7 +18,6 @@ class EmailVerificationPromptController extends Controller
     //                 ? redirect()->intended('dashboard')
     //                 : view('auth.verify-otp');
     // }
-
 
     public function __invoke(Request $request): JsonResponse
     {

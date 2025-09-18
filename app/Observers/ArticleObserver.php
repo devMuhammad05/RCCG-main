@@ -15,10 +15,10 @@ class ArticleObserver
 
         while (
             Article::where('slug', $slug)
-                ->when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->when($ignoreId, fn ($q) => $q->where('id', '!=', $ignoreId))
                 ->exists()
         ) {
-            $slug = $originalSlug . '-' . $count++;
+            $slug = $originalSlug.'-'.$count++;
         }
 
         return $slug;
@@ -34,7 +34,6 @@ class ArticleObserver
         }
     }
 
-
     /**
      * Handle the Article "updated" event.
      */
@@ -44,7 +43,6 @@ class ArticleObserver
             $article->slug = $this->generateUniqueSlug($article->title, $article->id);
         }
     }
-
 
     /**
      * Handle the Article "deleted" event.
