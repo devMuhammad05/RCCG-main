@@ -17,6 +17,7 @@ namespace App\Models{
  * @property string $thumbnail
  * @property string $title
  * @property string $sub_title
+ * @property string $slug
  * @property string $category
  * @property string $body
  * @property bool $is_active
@@ -31,6 +32,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereIsActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereSubTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Article whereTitle($value)
@@ -97,10 +99,36 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * @property-read \App\Models\User|null $user
+ * @property int $id
+ * @property int $user_id
+ * @property bool $church_announcement
+ * @property bool $event_reminder
+ * @property bool $other
+ * @property bool $in_app
+ * @property bool $email
+ * @property bool $sms
+ * @property bool $mark_as_read_when_opened
+ * @property bool $delete_after_30_days
+ * @property bool $show_confirmation_before_deleting_notification
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereChurchAnnouncement($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereDeleteAfter30Days($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereEventReminder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereInApp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereMarkAsReadWhenOpened($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereOther($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereShowConfirmationBeforeDeletingNotification($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereSms($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting whereUserId($value)
  */
 	class NotificationSetting extends \Eloquent {}
 }
@@ -163,6 +191,7 @@ namespace App\Models{
  * @property string|null $short_testimony
  * @property string $password
  * @property string|null $avatar
+ * @property string|null $date_of_birth
  * @property string|null $instagram_url
  * @property string|null $whatsapp_url
  * @property string|null $facebook_url
@@ -191,6 +220,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereBio($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereDateOfBirth($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereFacebookUrl($value)

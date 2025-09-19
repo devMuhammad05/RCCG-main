@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\V1\PrayerRequestController;
 use App\Http\Controllers\Api\V1\UpcomingEventController;
 use App\Http\Controllers\Api\V1\VolunteerSignUpController;
 use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
+use App\Http\Controllers\Api\V1\NotificationSettingsController;
 use App\Http\Controllers\Api\V1\VolunteerOpportunityController;
 use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
 
@@ -46,6 +47,9 @@ Route::prefix('v1')->group(function (): void {
         Route::get('user-volunteer-opportunities', [UserVolunteerOpportunityController::class, 'index']);
 
         Route::apiResource('articles', ArticleController::class, ['index', 'show']);
+
+        Route::get('notification-settings', [NotificationSettingsController::class, 'index']);
+
 
     });
 
