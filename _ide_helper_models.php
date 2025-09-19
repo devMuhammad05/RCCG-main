@@ -97,6 +97,16 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|NotificationSetting query()
+ */
+	class NotificationSetting extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * @property int $id
  * @property int $user_id
  * @property bool $is_shared_anonymously
@@ -163,6 +173,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Feedback> $feedbacks
  * @property-read int|null $feedbacks_count
+ * @property-read \App\Models\NotificationSetting|null $notificationSetting
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PrayerRequest> $prayerRequests

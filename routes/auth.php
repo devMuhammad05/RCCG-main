@@ -19,8 +19,8 @@ Route::prefix('v1')->group(function (): void {
     });
 
     Route::middleware(['auth:sanctum'])->group(function (): void {
-        Route::get('verify-email', EmailVerificationPromptController::class)
-            ->name('verification.notice');
+        // Route::get('verify-email', EmailVerificationPromptController::class)
+        //     ->name('verification.notice');
 
         Route::post('/logout', [AuthController::class, 'logout']);
     });

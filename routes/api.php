@@ -1,22 +1,25 @@
 <?php
 
-use App\Http\Controllers\Api\V1\ArticleController;
-use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
-use App\Http\Controllers\Api\V1\FeedbackController;
-use App\Http\Controllers\Api\V1\PrayerRequestController;
-use App\Http\Controllers\Api\V1\SearchController;
-use App\Http\Controllers\Api\V1\TestimonyController;
-use App\Http\Controllers\Api\V1\UpcomingEventController;
-use App\Http\Controllers\Api\V1\UserProfileController;
-use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
-use App\Http\Controllers\Api\V1\VolunteerOpportunityController;
-use App\Http\Controllers\Api\V1\VolunteerSignUpController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\SearchController;
+use App\Http\Controllers\Api\V1\ArticleController;
+use App\Http\Controllers\Api\V1\FeedbackController;
+use App\Http\Controllers\Api\V1\DashboardController;
+use App\Http\Controllers\Api\V1\TestimonyController;
+use App\Http\Controllers\Api\V1\UserProfileController;
+use App\Http\Controllers\Api\V1\PrayerRequestController;
+use App\Http\Controllers\Api\V1\UpcomingEventController;
+use App\Http\Controllers\Api\V1\VolunteerSignUpController;
+use App\Http\Controllers\Api\V1\FeaturedTestimonyController;
+use App\Http\Controllers\Api\V1\VolunteerOpportunityController;
+use App\Http\Controllers\Api\V1\UserVolunteerOpportunityController;
 
 Route::prefix('v1')->group(function (): void {
     Route::get('/', fn () => 'API is active');
 
     Route::group(['middleware' => ['auth:sanctum']], function (): void {
+
+        Route::get('dashboard', [DashboardController::class, 'index']);
 
         Route::get('user-profile', [UserProfileController::class, 'index']);
         Route::put('user-profile', [UserProfileController::class, 'update']);

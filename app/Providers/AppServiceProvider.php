@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Article;
+use App\Observers\ArticleObserver;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Article::observe(ArticleObserver::class);
+
         DB::prohibitDestructiveCommands(
             app()->environment('production')
         );
