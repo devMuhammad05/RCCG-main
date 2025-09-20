@@ -57,6 +57,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Event upcoming()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereCategory($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Event whereDate($value)

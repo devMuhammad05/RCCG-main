@@ -41,9 +41,7 @@ Route::prefix('v1')->group(function (): void {
         Route::get('upcoming-events', UpcomingEventController::class);
 
         Route::get('volunteer-opportunities', [VolunteerOpportunityController::class, 'index']);
-
         Route::apiResource('volunteer-opportunities.signups', VolunteerSignUpController::class)->only('store', 'update');
-
         Route::get('user-volunteer-opportunities', [UserVolunteerOpportunityController::class, 'index']);
 
         Route::apiResource('articles', ArticleController::class, ['index', 'show']);
