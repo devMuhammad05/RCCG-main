@@ -2,12 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ArticleCategory;
+use App\Enums\Role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
+use Illuminate\Support\Str;
+use App\Enums\ArticleCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,12 +18,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Admin
+        DB::table('users')->insert([
+            'name' => 'Administrator',
+            'email' => 'admin@rccg-be.com',
+            'email_verified_at' => now(),
+            'role' => Role::Admin->value,
+            'password' => Hash::make('rccgbe'),
         ]);
+
 
         DB::table('articles')->insert([
             [

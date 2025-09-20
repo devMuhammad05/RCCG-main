@@ -11,7 +11,6 @@ class Event extends Model
 {
 
 
-
     #[Scope]
     protected function upcoming(Builder $query): void
     {

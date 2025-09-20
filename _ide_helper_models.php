@@ -183,6 +183,7 @@ namespace App\Models{
 /**
  * @property int $id
  * @property string $name
+ * @property \App\Enums\Role $role
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string|null $phone_number
@@ -234,6 +235,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereProfession($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereShortTestimony($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereWhatsappUrl($value)

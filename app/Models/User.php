@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\Role;
+use Filament\Panel;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\NotificationSetting;
 use Illuminate\Notifications\Notifiable;
@@ -47,6 +49,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => Role::class,
         ];
     }
 
@@ -62,8 +65,8 @@ class User extends Authenticatable
             return true; // Allow access in non-production environments
         }
 
-        if ($this->role === Role::ADMIN) {
-            return str_ends_with($this->email, '@flashpay.ng') && $this->hasVerifiedEmail();
+        if ($this->role === Role::Admin) {
+            return str_ends_with($this->email, '@rccg-be.com') && $this->hasVerifiedEmail();
         }
 
         return false;
