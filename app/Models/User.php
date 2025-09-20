@@ -50,6 +50,25 @@ class User extends Authenticatable
         ];
     }
 
+    public function getFilamentName(): string
+    {
+        return $this->name ?? 'Administrator';
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+
+        if (! app()->isProduction()) {
+            return true; // Allow access in non-production environments
+        }
+
+        if ($this->role === Role::ADMIN) {
+            return str_ends_with($this->email, '@flashpay.ng') && $this->hasVerifiedEmail();
+        }
+
+        return false;
+    }
+
     public function feedbacks(): HasMany
     {
         return $this->hasMany(Feedback::class);
